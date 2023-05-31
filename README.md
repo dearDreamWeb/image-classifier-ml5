@@ -28,4 +28,4 @@ shapeClassifier.train({ epochs: 50 }, finishedTraining);
 
 # 效果
 效果查看的demo。  
-在`classifier-demo`中的`index.html`文件通过`VS Code`插件 `Open with Live Server`打开，按住鼠标绘图，之后点击识别按钮，即可看到结果。
+在根目录中的`index.html`文件通过`VS Code`插件 `Open with Live Server`打开，按住鼠标绘图，之后点击识别按钮，即可看到结果。
