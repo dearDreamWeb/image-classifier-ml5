@@ -5,21 +5,7 @@ let count = 400;
 let chunks = 10;
 let trainButton;
 
-function loadImageHandler(min, max) {
-  for (let i = min; i < max; i++) {
-    let index = nf(i + 1, 4, 0);
-    circles[i] = loadImage(`data/circle${index}.png`);
-    squares[i] = loadImage(`data/square${index}.png`);
-    triangles[i] = loadImage(`data/triangle${index}.png`);
-  }
-}
-
 function preload() {
-  // for (let i = 0; i < chunks; i++) {
-  //   setTimeout(() => {
-  //     loadImageHandler(i * count / chunks, (i + 1) * count / chunks)
-  //   }, 10000 * i)
-  // }
   for (let i = 0; i < count; i++) {
     let index = nf(i + 1, 4, 0);
     circles[i] = loadImage(`data/circle${index}.png`);
@@ -53,12 +39,12 @@ function train() {
     shapeClassifier.addData({ image: triangles[i] }, { label: 'triangle' })
   }
   shapeClassifier.normalizeData();
-  shapeClassifier.train({ epochs: 50 }, finishedTraining)
+  shapeClassifier.train({ epochs: 1 }, finishedTraining)
 }
 
 function finishedTraining() {
   console.log('finished');
   console.timeEnd('trainTime')
   trainButton.elt.innerHTML = '开始训练'
-  shapeClassifier.save()
+  // shapeClassifier.save()
 }

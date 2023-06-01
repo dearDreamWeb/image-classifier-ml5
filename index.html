@@ -8,6 +8,57 @@
     <meta http-equiv="Content-Type" content="application/javascript">
     <title>分类</title>
     <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+        }
+
+        #canvasMain,
+        .describe {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .describe {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #footer {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #btnBox {
+            margin-top: 12px;
+        }
+
+        #btnBox :first-child {
+            margin-right: 12px;
+        }
+
+        #btnBox :nth-of-type(n) {
+            background-color: #fff;
+            box-shadow: 0 2px 0 rgba(0, 0, 0, .02);
+            font-size: 14px;
+            height: 32px;
+            padding: 6px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            color: rgba(0, 0, 0, .88);
+            outline: none;
+            font-weight: 400;
+            border: 1px solid #d9d9d9;
+            transition: all .2s cubic-bezier(.645, .045, .355, 1);
+        }
+
+        #btnBox :nth-of-type(n):hover {
+            color: #4096ff;
+            border-color: #4096ff;
+        }
+
         canvas {
             border: 1px solid #ccc;
         }
@@ -15,6 +66,19 @@
 </head>
 
 <body>
+    <div class="describe">
+        <h1>操作说明</h1>
+        <ol>
+            <li>按住鼠标接口绘制图形</li>
+            <li>绘制完成之后点击<b>识别按钮</b>即可看到识别出来的图形概率</li>
+        </ol>
+        <h1>功能说明</h1>
+        <p>目前产品只能识别<b>圆形</b>、<b>矩形</b>、<b>三角形</b></p>
+    </div>
+    <div id="canvasMain"></div>
+    <div id="footer">
+        <div id="btnBox"></div>
+    </div>
     <script src="./lib/ml5.min.js"></script>
     <script src="./lib/p5.js"></script>
     <script src="./classifier-demo/sketch.js"></script>

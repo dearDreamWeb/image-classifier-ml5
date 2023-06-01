@@ -9,6 +9,7 @@ let img;
 
 function setup() {
     canvas = createCanvas(400, 400);
+    canvas.parent('canvasMain')
     pixelDensity(1);
     background(255);
 
@@ -28,22 +29,26 @@ function setup() {
     })
 
     clearButton = createButton('清除');
+    clearButton.parent('btnBox')
     clearButton.mousePressed(function () {
         background(255);
+        resultText.html('');
     })
 
     confirmButton = createButton('识别');
+    confirmButton.parent('btnBox')
     confirmButton.mousePressed(function () {
         classifyImage();
     })
 
     resultText = createDiv('')
+    resultText.parent('footer')
     inputImage = createGraphics(100, 100);
 }
 
 function mouseDragged() {
     stroke(0);
-    strokeWeight(16);
+    strokeWeight(4);
     line(mouseX, mouseY, pmouseX, pmouseY);
 }
 
@@ -62,9 +67,9 @@ function gotResults(err, results) {
         return;
     }
     let map = {
-        circle: '圆形',
-        square: '矩形',
-        triangle: '三角形',
+        circle: '圆形概率',
+        square: '矩形概率',
+        triangle: '三角形概率',
     }
 
     let listDom = ``;
